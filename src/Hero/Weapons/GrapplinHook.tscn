@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Hero/Weapons/GrapplinHook.gd" type="Script" id=1]
+
+[sub_resource type="CylinderMesh" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="GrapplinHook" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="RayCast" type="RayCast" parent="."]
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, 0, -40 )
+collision_mask = 48
+
+[node name="Visual" type="Spatial" parent="."]
+
+[node name="FiringOrigin" type="Spatial" parent="Visual"]
+unique_name_in_owner = true
+transform = Transform( 0.999989, 0, 0, 0, 0.999981, 0, 0, 0, 0.999995, 0.191217, -0.135213, -0.439623 )
+
+[node name="Chain" type="Spatial" parent="Visual/FiringOrigin"]
+unique_name_in_owner = true
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 1, 1.49012e-08, -4.47035e-08, 2.98023e-08 )
+visible = false
+
+[node name="Chain" type="MeshInstance" parent="Visual/FiringOrigin/Chain"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.76837e-07, -1, -1 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+
+[node name="MeshInstance" type="MeshInstance" parent="Visual"]
+transform = Transform( 0.0498927, 0.00018124, 0.016344, -8.72302e-05, 0.0499792, -0.00719849, -0.00327266, 0.00143091, 0.249361, 0.2, -0.15, -0.2 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="RemoteTransform" type="RemoteTransform" parent="Visual/MeshInstance"]
+transform = Transform( 1, 4.65661e-10, 5.96046e-08, 4.65661e-10, 1, -4.47035e-08, -1.86265e-09, -9.31323e-10, 1, 0.137876, 0.157834, -0.960043 )
+remote_path = NodePath("../../FiringOrigin")
+update_rotation = false
+update_scale = false
+
+[node name="Crosshair" type="CanvasLayer" parent="."]
+
+[node name="Crosshair" type="Control" parent="Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="ColorRect" type="ColorRect" parent="Crosshair/Crosshair"]
+margin_left = 4.0
+margin_top = 10.0
+margin_right = 20.0
+margin_bottom = 14.0
+
+[node name="ColorRect2" type="ColorRect" parent="Crosshair/Crosshair"]
+margin_left = -20.0
+margin_top = 10.0
+margin_right = -4.0
+margin_bottom = 14.0
