@@ -92,8 +92,8 @@ func _process_movement_horizontal(delta):
 func _input(event):
 	if event is InputEventKey:
 		if event.is_echo(): return
-		if event.scancode == KEY_ALT:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if event.pressed else Input.MOUSE_MODE_CAPTURED
+		if (event.scancode == KEY_ALT || event.scancode == KEY_ESCAPE) && event.pressed:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			return
 	
 	if event is InputEventMouseMotion:
@@ -109,6 +109,7 @@ func _action_input(event):
 		try_jump()
 		
 	if selected_weapon != null && event.is_action("fire_main"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		if event.is_pressed(): 
 			selected_weapon.fire()
 
