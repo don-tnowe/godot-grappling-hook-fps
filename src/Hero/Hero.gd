@@ -20,6 +20,8 @@ var jump_buffering_pressed_time := 0
 var coyote_time := 0
 
 var selected_weapon : Spatial
+var selected_weapon_alt : Spatial
+var selected_weapon_special : Spatial
 
 
 func _set_movement_input(v):
@@ -51,6 +53,10 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	selected_weapon = $"%Weapons".get_child(0)
 	selected_weapon.equip(self)
+	selected_weapon_alt = $"%Weapons".get_child(1)
+	selected_weapon_alt.equip(self)
+	# selected_weapon_special = $"%Weapons".get_child(0)
+	# selected_weapon_special.equip(self)
 
 
 func _physics_process(delta):
@@ -130,3 +136,10 @@ func _action_input(event):
 
 		else: 
 			selected_weapon.stop_firing()
+	
+	if selected_weapon_alt != null && event.is_action("fire_alt"):
+		if event.is_pressed(): 
+			selected_weapon_alt.fire()
+
+		else: 
+			selected_weapon_alt.stop_firing()

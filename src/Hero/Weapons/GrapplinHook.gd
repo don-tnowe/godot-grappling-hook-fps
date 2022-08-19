@@ -1,27 +1,24 @@
-extends Spatial
+extends WeaponBase
 
 
 export var reel_in_acceleration := 24.0
-
-var equipped := false
-var firing := false
-var hero_node : KinematicBody
 
 var attached := false
 var attached_tip := Vector3()
 var attached_pivot := Vector3()
 var attached_pivot_distance := 0.0
+var attached_object : Spatial
 var bend_points := []
 
 
 func equip(hero):
-	hero_node = hero
-	_set_equipped(true)
+	.equip(hero)
 	hero.connect("jumped", self, "_on_Hero_jumped")
 
 
 func unequip():
-	_set_equipped(false)
+	.unequip()
+	detach()
 	hero_node.disconnect("jumped", self, "_on_Hero_jumped")
 
 
@@ -37,16 +34,17 @@ func fire():
 		try_attach()
 
 
-func stop_firing():
-	firing = false
-		
-
 func try_attach():
 	if $"RayCast".is_colliding():
 		# If not in the "grapplable" layer, the object is - well - not grappleable!
 		if !$"RayCast".get_collider().get_collision_layer_bit(5):
 			return
+		
+		if $"RayCast".get_collider().has_method("grapple_attach"):
+			$"RayCast".get_collider().grapple_attach()
 
+		attached_object = $"RayCast".get_collider()
+			
 		attach_to_point($"RayCast".get_collision_point() + $"RayCast".get_collision_normal() * 0.2)
 
 
@@ -58,17 +56,21 @@ func attach_to_point(point):
 	$"%Chain".visible = true
 
 
-func unattach():
+func detach():
 	attached = false
 	$"%Chain".visible = false
 	bend_points = []
+	if is_instance_valid(attached_object) && attached_object.has_method("grapple_detach"):
+		attached_object.grapple_detach()
+	
+	attached_object = null
 	for x in $"%Chain/Segments".get_children():
 		x.visible = false
 
 
 func _physics_process(delta):
 	if !equipped: return
-		
+	
 	$"Crosshair/Crosshair".modulate = _get_crosshair_color()
 	
 	if !attached: return
@@ -193,5 +195,5 @@ func _on_Hero_jumped(completed):
 	if attached_pivot.y > hero_node.translation.y:
 		hero_node.jump()
 
-	unattach()
+	detach()
 	

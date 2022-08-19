@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Hero/Weapons/RocketLauncher.gd" type="Script" id=1]
+[ext_resource path="res://src/Hero/Weapons/RocketLauncherRocket.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="RocketMcLauncho" type="Spatial"]
+script = ExtResource( 1 )
+firing_cooldown = 0.5
+rocket_scene = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.49012e-08, 0 )
+cast_to = Vector3( 0, 0, -4000 )
+collision_mask = 24
+
+[node name="Global" type="Node" parent="."]
+
+[node name="Crosshair" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="FiringOrigin" type="Spatial" parent="."]
+unique_name_in_owner = true
+transform = Transform( 0.999989, 0, 0, 0, 0.999981, 0, 0, 0, 0.999995, -0.163104, -0.146527, -0.425966 )
+
+[node name="Visual" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Visual"]
+transform = Transform( 0.00241148, 0.0475213, -0.0767967, -0.0499324, 0.00199515, -0.00833343, -0.000971178, 0.015419, 0.237766, -0.244665, -0.147958, -0.2 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="RemoteTransform" type="RemoteTransform" parent="Visual/MeshInstance"]
+transform = Transform( 1, 4.65661e-10, 5.96046e-08, 4.65661e-10, 1, -4.47035e-08, -1.86265e-09, -9.31323e-10, 1, 0.137876, 0.157834, -0.960043 )
+remote_path = NodePath("../../../FiringOrigin")
+update_rotation = false
+update_scale = false

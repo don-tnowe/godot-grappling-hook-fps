@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Hero/Hero.gd" type="Script" id=1]
 [ext_resource path="res://src/Hero/TouchscreenHUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Hero/Weapons/GrapplinHook.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Hero/Weapons/RocketLauncher.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.5
@@ -12,6 +13,7 @@ radius = 0.33
 ambient_light_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
 [node name="Hero" type="KinematicBody"]
+collision_layer = 3
 collision_mask = 20
 input_ray_pickable = false
 script = ExtResource( 1 )
@@ -33,6 +35,8 @@ far = 800.0
 unique_name_in_owner = true
 
 [node name="GrapplinHook" parent="Head/HeadBobbing/Camera/Weapons" instance=ExtResource( 3 )]
+
+[node name="RocketMcLauncho" parent="Head/HeadBobbing/Camera/Weapons" instance=ExtResource( 4 )]
 
 [node name="Touch" parent="." instance=ExtResource( 2 )]
 
