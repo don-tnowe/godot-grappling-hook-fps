@@ -1023,7 +1023,7 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2" type="CollisionShape" parent="WorldFloor"]
-transform = Transform( 1000, 0, 0, 0, 5, 0, 0, 0, 1000, -12.6342, 82.5761, 7.52536 )
+transform = Transform( 1000, 0, 0, 0, 5, 0, 0, 0, 1000, -12.6342, 109.76, 7.52536 )
 shape = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true

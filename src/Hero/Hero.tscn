@@ -9,6 +9,7 @@ height = 1.5
 radius = 0.33
 
 [sub_resource type="Environment" id=2]
+ambient_light_color = Color( 0.203922, 0.203922, 0.203922, 1 )
 
 [node name="Hero" type="KinematicBody"]
 collision_mask = 20

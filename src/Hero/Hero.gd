@@ -9,8 +9,8 @@ export var sprint_acceleration := 4.0
 export var sprint_max_speed := 12.0
 export var brake := 12.0
 
-export var jump_strength := 4.0
-export var gravity := 6.0
+export var jump_strength := 9.0
+export var gravity := 18.0
 
 export var look_sensitivity := 1.0
 
