@@ -14,6 +14,26 @@ enabled = true
 exclude_parent = false
 cast_to = Vector3( 0, 0, -40 )
 collision_mask = 48
+debug_shape_custom_color = Color( 0.137255, 0.137255, 0.137255, 1 )
+
+[node name="ToPivot" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
+exclude_parent = false
+cast_to = Vector3( 0, 0, -40 )
+collision_mask = 16
+debug_shape_custom_color = Color( 0.243137, 1, 0, 1 )
+
+[node name="ToBend" type="RayCast" parent="."]
+exclude_parent = false
+cast_to = Vector3( 0, -0.2, -40 )
+collision_mask = 16
+debug_shape_custom_color = Color( 0, 0.203922, 1, 1 )
+
+[node name="ToBendProjection" type="RayCast" parent="."]
+exclude_parent = false
+cast_to = Vector3( 0, 0, -40 )
+collision_mask = 16
+debug_shape_custom_color = Color( 0.517647, 0.027451, 0.694118, 1 )
 
 [node name="Visual" type="Spatial" parent="."]
 
@@ -27,9 +47,81 @@ transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 1, 1.49012e-08, -4.47035e-0
 visible = false
 
 [node name="Chain" type="MeshInstance" parent="Visual/FiringOrigin/Chain"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.76837e-07, -1, -1 )
+transform = Transform( 1, 0, 0, 0, -2.18557e-08, -1, 0, 0.5, -4.37114e-08, 0, -1, -0.5 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../..")
+
+[node name="Segments" type="Node" parent="Visual/FiringOrigin/Chain"]
+
+[node name="Spatial" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial2" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial2"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial3" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial3"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial4" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial4"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial5" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial5"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial6" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial6"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial7" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial7"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial8" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial8"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial9" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial9"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+
+[node name="Spatial10" type="Spatial" parent="Visual/FiringOrigin/Chain/Segments"]
+
+[node name="Chain2" type="MeshInstance" parent="Visual/FiringOrigin/Chain/Segments/Spatial10"]
+transform = Transform( 0.05, 0, 0, 0, -2.18557e-08, 0.05, 0, -0.5, -2.18557e-09, 0, 0, -0.5 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
 
 [node name="MeshInstance" type="MeshInstance" parent="Visual"]
 transform = Transform( 0.0498927, 0.00018124, 0.016344, -8.72302e-05, 0.0499792, -0.00719849, -0.00327266, 0.00143091, 0.249361, 0.2, -0.15, -0.2 )
