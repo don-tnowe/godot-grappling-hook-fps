@@ -84,7 +84,7 @@ func _physics_process(delta):
 		
 	if firing:
 		attached_pivot_distance = rel_position.length()
-		hero_node.velocity -= reel_in_acceleration * delta * rel_position.normalized()
+		hero_node.velocity -= (reel_in_acceleration * rel_position.normalized() + Vector3(0, -hero_node.gravity, 0)) * delta
 	
 	_check_obstacles(rel_position, abs_position)
 	_draw_rope(abs_position)
