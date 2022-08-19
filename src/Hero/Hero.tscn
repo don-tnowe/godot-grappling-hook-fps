@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Hero/Hero.gd" type="Script" id=1]
-[ext_resource path="res://src/Hero/HeroHUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Hero/TouchscreenHUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Hero/Weapons/GrapplinHook.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CylinderShape" id=1]
 height = 1.5
 radius = 0.33
+
+[sub_resource type="Environment" id=2]
 
 [node name="Hero" type="KinematicBody"]
 collision_mask = 20
@@ -23,6 +25,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485051, 0 )
 
 [node name="Camera" type="Camera" parent="Head/HeadBobbing"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.2 )
+environment = SubResource( 2 )
 far = 800.0
 
 [node name="Weapons" type="Spatial" parent="Head/HeadBobbing/Camera"]
@@ -30,4 +33,7 @@ unique_name_in_owner = true
 
 [node name="GrapplinHook" parent="Head/HeadBobbing/Camera/Weapons" instance=ExtResource( 3 )]
 
-[node name="HUD" parent="." instance=ExtResource( 2 )]
+[node name="Touch" parent="." instance=ExtResource( 2 )]
+
+[connection signal="drag_look" from="Touch" to="." method="look_turn"]
+[connection signal="tilt_move" from="Touch" to="." method="_set_movement_input"]
