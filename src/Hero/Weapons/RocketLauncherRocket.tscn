@@ -102,7 +102,7 @@ radius = 0.75
 [sub_resource type="SphereShape" id=4]
 
 [node name="Rocket" type="KinematicBody"]
-collision_layer = 32
+collision_layer = 96
 collision_mask = 24
 input_ray_pickable = false
 script = ExtResource( 2 )
@@ -130,7 +130,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 3 )
 
 [node name="Explosion" type="Area" parent="."]
-collision_layer = 0
+collision_layer = 3
 input_ray_pickable = false
 
 [node name="Explosion" type="Sprite3D" parent="Explosion"]
@@ -149,7 +149,6 @@ disabled = true
 process_mode = 0
 wait_time = 0.25
 one_shot = true
-autostart = true
 
 [node name="DestroyTimer" type="Timer" parent="."]
 process_mode = 0
@@ -159,5 +158,4 @@ autostart = true
 
 [connection signal="body_entered" from="Explosion" to="." method="_on_Explosion_body_entered"]
 [connection signal="timeout" from="PlayerCollisionTimer" to="." method="set_collision_mask_bit" binds= [ 1, true ]]
-[connection signal="timeout" from="PlayerCollisionTimer" to="." method="set_collision_layer_bit" binds= [ 4, true ]]
 [connection signal="timeout" from="DestroyTimer" to="." method="collide"]

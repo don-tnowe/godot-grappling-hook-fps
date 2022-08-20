@@ -107,6 +107,7 @@ move_stop={
 3d_physics/layer_4="enemy_hurtbox"
 3d_physics/layer_5="environment"
 3d_physics/layer_6="grappleable"
+3d_physics/layer_7="solid_projectiles"
 
 [physics]
 
