@@ -23,22 +23,59 @@ anchor_bottom = 1.0
 
 [node name="Jump" type="TouchScreenButton" parent="BL/Touch"]
 self_modulate = Color( 1, 1, 1, 0.498039 )
-position = Vector2( 256, -116 )
+position = Vector2( 247, -122 )
 rotation = 0.261799
-scale = Vector2( 0.4, 0.6 )
+scale = Vector2( 0.5, 0.6 )
 normal = ExtResource( 2 )
 shape = SubResource( 2 )
+passby_press = true
 action = "jump"
 visibility_mode = 1
 
+[node name="Polygon2D8" type="Polygon2D" parent="BL/Touch/Jump"]
+position = Vector2( 48.0277, 40.7474 )
+rotation = -1.57079
+scale = Vector2( 0.666667, 1.5 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( 12.0082, 33.438, -61.6501, -1.71698, -107.358, 13.3499, -55.6066, 45.5164, -75.1786, 86.9728, -27.1826, 90.4772 )
+
+[node name="Polygon2D9" type="Polygon2D" parent="BL/Touch/Jump"]
+position = Vector2( 74.6451, 110.446 )
+rotation = -1.57079
+scale = Vector2( 0.666667, 1.5 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( -15.1943, 15.1503, 17.3656, 31.765, 0.335205, 53.7874, -16.2683, 44.675, -51.1964, 54.3653, -43.0046, 42.5492, -58.3141, 36.6567, -21.4448, 31.796 )
+
 [node name="Fire" type="TouchScreenButton" parent="BL/Touch"]
 self_modulate = Color( 1, 1, 1, 0.498039 )
-position = Vector2( 155.638, -328 )
+position = Vector2( 156, -327 )
 scale = Vector2( 0.75, 0.75 )
 normal = ExtResource( 1 )
 shape = SubResource( 1 )
+passby_press = true
 action = "fire_main"
 visibility_mode = 1
+
+[node name="Polygon2D3" type="Polygon2D" parent="BL/Touch/Fire"]
+position = Vector2( 187.003, 183.328 )
+rotation = 0.261799
+scale = Vector2( 0.533333, 0.8 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( -14.3156, 9.45911, -14.6624, -4.28265, -34.8013, -9.3125, -59.4231, 0.262146, -57.9556, 10.3528, -41.9993, 17.8552 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="BL/Touch/Fire"]
+position = Vector2( 176.337, 148.662 )
+rotation = 0.797413
+scale = Vector2( 0.764238, 1.51291 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( -14.3156, 9.45911, -14.6624, -4.28265, -34.8013, -9.3125, -59.4231, 0.262146, -57.9556, 10.3528, -41.9993, 17.8552 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="BL/Touch/Fire"]
+position = Vector2( 113.67, 39.3284 )
+rotation = -1.0472
+scale = Vector2( 1.26571, 2.6531 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( -14.3156, 9.45911, -14.6624, -4.28265, -34.8013, -9.3125, -59.4231, 0.262146, -57.9556, 10.3528, -41.9993, 17.8552 )
 
 [node name="Altfire" type="TouchScreenButton" parent="BL/Touch"]
 self_modulate = Color( 1, 1, 1, 0.498039 )
@@ -46,25 +83,56 @@ position = Vector2( 116, -220 )
 scale = Vector2( 0.5, 0.5 )
 normal = ExtResource( 1 )
 shape = SubResource( 1 )
+passby_press = true
 action = "fire_alt"
 visibility_mode = 1
 
+[node name="Polygon2D6" type="Polygon2D" parent="BL/Touch/Altfire"]
+position = Vector2( 110.265, 92.2128 )
+rotation = -1.309
+scale = Vector2( 0.8, 1.2 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( -57.5283, -20.7819, -102.416, 2.76569, -117.159, 43.3594, -77.0078, 72.4218, -16.7644, 80.6404, 28.1233, 57.0928, 41.0983, 18.5405, -8.31873, 30.8188, -42.6462, 16.2453 )
+
+[node name="Polygon2D7" type="Polygon2D" parent="BL/Touch/Altfire"]
+position = Vector2( 108.265, 84.2128 )
+rotation = -1.57079
+scale = Vector2( 0.8, 1.2 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( -36.569, -7.27124, -39.8507, -41.1943, -14.362, -16.4146, 21.9872, -41.8877, 0.473633, -5.26093, 31.5659, 1.26312, -19.7922, 8.71191, -16.4301, -2.24139, -23.8479, -7.81818 )
+
 [node name="SFire" type="TouchScreenButton" parent="BL/Touch"]
 self_modulate = Color( 1, 1, 1, 0.498039 )
-position = Vector2( 91.6384, -324 )
+position = Vector2( 104, -343 )
 rotation = 1.309
-scale = Vector2( 0.4, 0.6 )
+scale = Vector2( 0.5, 0.6 )
 normal = ExtResource( 2 )
 shape = SubResource( 2 )
+passby_press = true
 action = "fire_special"
 visibility_mode = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="BL/Touch/SFire"]
+position = Vector2( 217.437, 158.155 )
+rotation = -1.0472
+scale = Vector2( 0.806087, 1.42586 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( 12.0616, -98.7803, 4.29712, -118.099, -19.5042, -100.043, -43.9991, -109.472, -54.3519, -135.23, -72.9769, -104.295, -13.6344, -59.681, 61.0515, -79.9242, 64.8409, -122.012, 33.9684, -95.7917 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="BL/Touch/SFire"]
+position = Vector2( 212.775, 144.734 )
+rotation = -1.0472
+scale = Vector2( 1, 1.25019 )
+color = Color( 0, 0, 0, 0.498039 )
+polygon = PoolVector2Array( -30.3648, -49.7905, -34.8477, -35.1861, -32.2595, -28.7466, -39.3306, -20.5816, -45.7081, 15.0668, -43.12, 21.5063, -23.8015, 18.0554, -17.4239, -17.593, -20.0121, -24.0325, -12.9409, -32.1975, -8.4581, -46.802, -18.9377, -53.5573 )
+
 [node name="MoveStop" type="TouchScreenButton" parent="BL/Touch"]
 self_modulate = Color( 1, 1, 1, 0.498039 )
-position = Vector2( 380, -88 )
+position = Vector2( 378, -93 )
 scale = Vector2( 0.3, 0.3 )
 normal = ExtResource( 1 )
 shape = SubResource( 1 )
+passby_press = true
 action = "move_stop"
 visibility_mode = 1
 
