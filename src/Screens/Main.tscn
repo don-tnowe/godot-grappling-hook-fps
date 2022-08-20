@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Hero/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Graphics/Mesh/Kenney Prototype/dark_01.tres" type="Material" id=2]
 [ext_resource path="res://assets/Graphics/Mesh/Kenney Prototype/orange_01.tres" type="Material" id=3]
+[ext_resource path="res://src/SceneObjects/DestroyOnPlatform.gd" type="Script" id=4]
+[ext_resource path="res://assets/Fonts/3DText.tres" type="DynamicFont" id=5]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 1, 1.00006, 1 )
@@ -14,10 +16,171 @@ extents = Vector3( 1, 1.00006, 1 )
 [node name="Spatial" type="Spatial"]
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0558133, 1.21949, 4.11625 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0558133, -3.25597, 24.9608 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.614285, 0.789084, 0, -0.789084, 0.614285, 0, 5.87714, 0 )
+
+[node name="Tutorial" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.2294 )
+
+[node name="Solid" type="StaticBody" parent="Tutorial"]
+collision_layer = 48
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Tutorial/Solid"]
+transform = Transform( 16.156, 0, 0, 0, 0.3, 0, 0, 0, 17.2425, 0, -4.4475, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Tutorial/Solid/CollisionShape"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Tutorial/Solid"]
+transform = Transform( 16.156, 0, 0, 0, 0.3, 0, 0, 0, 17.2425, 0, 7.38325, 0 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Tutorial/Solid/CollisionShape3"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Tutorial/Solid"]
+transform = Transform( 16.156, 0, 0, 0, 8.90163, 0, 0, 0, 0.480522, 0, -1.11172, 17.0364 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Tutorial/Solid/CollisionShape4"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Tutorial/Solid"]
+transform = Transform( 6.32612, 0, 0, 0, 8.90163, 0, 0, 0, 0.480522, 9.87298, -1.11172, -16.6564 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Tutorial/Solid/CollisionShape5"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Tutorial/Solid"]
+transform = Transform( 6.32612, 0, 0, 0, 8.90163, 0, 0, 0, 0.480522, -9.4054, -1.11172, -16.6564 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Tutorial/Solid/CollisionShape8"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Tutorial/Solid"]
+transform = Transform( -7.06201e-07, 0, -0.480522, 0, 8.90163, 0, 16.9112, 0, -2.19861e-08, 15.7747, -1.11172, 0.333202 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Tutorial/Solid/CollisionShape6"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Tutorial/Solid"]
+transform = Transform( -7.06201e-07, 0, -0.480522, 0, 8.90163, 0, 16.9112, 0, -2.19861e-08, -15.7979, -1.11172, 0.333202 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Tutorial/Solid/CollisionShape7"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Tutorial/Solid"]
+transform = Transform( 4.90011, 0, 0, 0, 0.253858, -2.44196, 0, 0.159863, 3.87777, 0, -2.34518, -13.4125 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Tutorial/Solid/CollisionShape2"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="TextTouch" type="Spatial" parent="Tutorial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.871922, 0 )
+script = ExtResource( 4 )
+
+[node name="Label3D" type="Label3D" parent="Tutorial/TextTouch"]
+transform = Transform( 0.954761, 0, -0.297375, 0, 1, 0, 0.297375, 0, 0.954761, 3.11488, -2.26057, -5.11386 )
+text = "And use the small round button to stop! 
+Release it once you've placed your device
+in a comfortable position."
+font = ExtResource( 5 )
+
+[node name="Label3D2" type="Label3D" parent="Tutorial/TextTouch"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0615785, -1.8957, 0.503633 )
+text = "Tilt your device to move!"
+font = ExtResource( 5 )
+
+[node name="Label3D5" type="Label3D" parent="Tutorial/TextTouch"]
+transform = Transform( 0.991783, 0, 0.12793, 0.0191301, 0.988756, -0.148307, -0.126492, 0.149535, 0.980632, 0.0880511, -0.884015, -1.44633 )
+text = "Press the Left button to use the Grappling hook!"
+font = ExtResource( 5 )
+
+[node name="Label3D6" type="Label3D" parent="Tutorial/TextTouch"]
+transform = Transform( 0.991783, 0, 0.12793, 0.0191301, 0.988756, -0.148307, -0.126492, 0.149535, 0.980632, 0.0880511, -0.590706, -1.44633 )
+text = "Press the bottom button to jump."
+font = ExtResource( 5 )
+
+[node name="TextNonTouch" type="Spatial" parent="Tutorial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0615785, -2.76763, 0.503633 )
+script = ExtResource( 4 )
+is_mobile = false
+
+[node name="Label3D" type="Label3D" parent="Tutorial/TextNonTouch"]
+text = "Use WASD to move!"
+font = ExtResource( 5 )
+
+[node name="Label3D2" type="Label3D" parent="Tutorial/TextNonTouch"]
+transform = Transform( 0.946649, 0, 0.322266, 0, 1, 0, -0.322266, 0, 0.946649, -2.48353, 0.216679, -4.81926 )
+text = "Tap and hold mouse buttons to shoot."
+font = ExtResource( 5 )
+
+[node name="Label3D3" type="Label3D" parent="Tutorial/TextNonTouch"]
+transform = Transform( 0.991783, 0, 0.12793, 0.0191301, 0.988756, -0.148307, -0.126492, 0.149535, 0.980632, 0.0264726, 1.01169, -1.94996 )
+text = "Press Shift to use the Grappling hook!"
+font = ExtResource( 5 )
+
+[node name="Label3D4" type="Label3D" parent="Tutorial/TextNonTouch"]
+transform = Transform( 0.991783, 0, 0.12793, 0.0191301, 0.988756, -0.148307, -0.126492, 0.149535, 0.980632, 0.0264726, 1.305, -1.94996 )
+text = "Press Spacebar to jump."
+font = ExtResource( 5 )
+
+[node name="Label3D3" type="Label3D" parent="Tutorial"]
+transform = Transform( 0.946649, 0, 0.322266, 0, 1, 0, -0.322266, 0, 0.946649, -2.42195, -2.82759, -4.31563 )
+text = "Fireballs explode and can be grappled on."
+font = ExtResource( 5 )
+
+[node name="Label3D4" type="Label3D" parent="Tutorial"]
+transform = Transform( 0.946649, 0, 0.322266, 0, 1, 0, -0.322266, 0, 0.946649, -2.42195, -3.28455, -4.31563 )
+text = "The machinegun's (and shotgun's, if you tap!) 
+bullets propel you on hit."
+font = ExtResource( 5 )
+
+[node name="Label3D5" type="Label3D" parent="Tutorial"]
+transform = Transform( 0.991783, 0, 0.12793, 0.0191301, 0.988756, -0.148307, -0.126492, 0.149535, 0.980632, 0.0880511, -2.03085, -1.44633 )
+text = "Hold the button to reel it in."
+font = ExtResource( 5 )
 
 [node name="Start" type="Spatial" parent="."]
 
