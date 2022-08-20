@@ -55,8 +55,8 @@ func _ready():
 	selected_weapon.equip(self)
 	selected_weapon_alt = $"%Weapons".get_child(1)
 	selected_weapon_alt.equip(self)
-	# selected_weapon_special = $"%Weapons".get_child(0)
-	# selected_weapon_special.equip(self)
+	selected_weapon_special = $"%Weapons".get_child(2)
+	selected_weapon_special.equip(self)
 
 
 func _physics_process(delta):
@@ -143,3 +143,10 @@ func _action_input(event):
 
 		else: 
 			selected_weapon_alt.stop_firing()
+			
+	if selected_weapon_special != null && event.is_action("fire_special"):
+		if event.is_pressed(): 
+			selected_weapon_special.fire()
+
+		else: 
+			selected_weapon_special.stop_firing()

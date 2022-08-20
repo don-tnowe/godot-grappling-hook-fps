@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Hero/Weapons/Bouncegun.gd" type="Script" id=1]
+[ext_resource path="res://src/Hero/Weapons/BouncegunBullet.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CubeMesh" id=2]
+
+[node name="BouncyPewpew" type="Spatial"]
+script = ExtResource( 1 )
+firing_cooldown = 0.1
+bullet_scene = ExtResource( 2 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.49012e-08, 0 )
+cast_to = Vector3( 0, 0, -4000 )
+collision_mask = 24
+
+[node name="Global" type="Node" parent="."]
+
+[node name="Crosshair" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="FiringOrigin" type="Spatial" parent="."]
+unique_name_in_owner = true
+transform = Transform( 0.999989, 0, 0, 0, 0.999981, 0, 0, 0, 0.999995, 0.191217, -0.135213, -0.439623 )
+
+[node name="Visual" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Visual"]
+transform = Transform( 0.0498927, 0.00018124, 0.016344, -8.72302e-05, 0.0499792, -0.00719849, -0.00327266, 0.00143091, 0.249361, 0.2, -0.15, -0.2 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+
+[node name="RemoteTransform" type="RemoteTransform" parent="Visual/MeshInstance"]
+transform = Transform( 1, 4.65661e-10, 5.96046e-08, 4.65661e-10, 1, -4.47035e-08, -1.86265e-09, -9.31323e-10, 1, 0.137876, 0.157834, -0.960043 )
+remote_path = NodePath("../../../FiringOrigin")
+update_rotation = false
+update_scale = false
