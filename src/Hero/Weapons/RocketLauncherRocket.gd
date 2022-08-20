@@ -2,9 +2,9 @@ extends KinematicBody
 
 
 export var rocket_speed := 6.0
-export var explosion_power := 20.0
+export var explosion_power := 25.0
 export var explosion_radius := 6.0
-export var explosion_power_normal := 10.0
+export var explosion_power_normal := 20.0
 
 var velocity := Vector3.ZERO
 var grapple_attached := false
@@ -49,6 +49,6 @@ func _on_Explosion_body_entered(body):
 	if "velocity" in body:
 		var knockback_power = (explosion_radius - body.global_translation.distance_to(global_translation)) / explosion_radius * explosion_power
 		var knockback_direction = global_translation.direction_to(body.global_translation)
-		body.velocity += body.velocity * body.velocity.normalized().dot(knockback_direction)
+		var colinearity = body.velocity.normalized().dot(knockback_direction)
 		body.velocity += knockback_direction * knockback_power
-		body.velocity += impact_normal * explosion_power_normal
+		body.velocity += impact_normal * explosion_power_normal * colinearity * colinearity
