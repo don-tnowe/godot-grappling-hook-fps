@@ -1,7 +1,7 @@
 extends KinematicBody
 
 
-export var speed := 24.0
+export var speed := 36.0
 export var hit_knockback := 12.0
 export var bounce_gravity := 18.0
 export var bounce_count := 3

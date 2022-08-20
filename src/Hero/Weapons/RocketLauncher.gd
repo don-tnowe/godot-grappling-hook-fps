@@ -17,6 +17,7 @@ func _spawn_projectile(dir):
 	var rocket = rocket_scene.instance()
 	$"Global".add_child(rocket)
 
+	$"RayCast".cast_to = dir * 4000
 	$"RayCast".force_raycast_update()
 	if $"RayCast".is_colliding():
 		var point = $"RayCast".get_collision_point()
@@ -28,7 +29,7 @@ func _spawn_projectile(dir):
 			return
 
 	else:
-		rocket.launch(global_transform.basis.xform(dir))
+		rocket.launch(global_transform.basis.xform(Vector3.FORWARD))
 
 	rocket.velocity += hero_node.velocity * 0.66
 	rocket.translation = $"%FiringOrigin".global_translation

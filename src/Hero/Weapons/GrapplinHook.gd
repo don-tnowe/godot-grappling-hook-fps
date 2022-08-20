@@ -18,8 +18,8 @@ func equip(hero):
 
 func unequip():
 	.unequip()
-	detach()
 	hero_node.disconnect("jumped", self, "_on_Hero_jumped")
+	detach()
 
 
 func _set_equipped(v):

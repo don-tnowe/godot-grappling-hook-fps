@@ -2,6 +2,9 @@ class_name WeaponBase
 extends Spatial
 
 
+signal equipped(hero)
+signal unequipped()
+
 export var firing_cooldown := 0.0
 
 var equipped := false
@@ -13,11 +16,12 @@ var hero_node : KinematicBody
 func equip(hero):
 	hero_node = hero
 	_set_equipped(true)
+	emit_signal("equipped", hero)
 
 
 func unequip():
 	_set_equipped(false)
-	hero_node.disconnect("jumped", self, "_on_Hero_jumped")
+	emit_signal("unequipped")
 
 
 func _set_equipped(v):
