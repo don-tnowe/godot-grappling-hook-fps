@@ -26,7 +26,7 @@ func _set_equipped(v):
 	$"Crosshair".visible = v
 
 
-func fire():
+func fire(refire = false):
 	firing = true
 	if can_refire():
 		last_fired = Time.get_ticks_msec()

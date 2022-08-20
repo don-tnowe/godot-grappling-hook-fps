@@ -5,16 +5,17 @@ export var bullet_scene : PackedScene
 export var recoil_impulse := 1.0
 
 
-func fire():
+func fire(refire = false):
+	firing = true
 	if !can_refire(): return
-	.fire()
+	
+	last_fired = Time.get_ticks_msec()
 	hero_node.velocity += global_transform.basis.xform(Vector3(0, 0, recoil_impulse))
-	_spawn_projectile()
+	_spawn_projectile(Vector3.FORWARD)
 
 
-func _spawn_projectile():
+func _spawn_projectile(dir):
 	$"RayCast".force_raycast_update()
-	var dir = Vector3.FORWARD
 	if $"RayCast".is_colliding():
 		var point = $"RayCast".get_collision_point()
 		dir = $"%FiringOrigin".global_translation.direction_to(point)
@@ -30,4 +31,4 @@ func _spawn_projectile():
 
 func _physics_process(_delta):
 	if firing && can_refire():
-		fire()
+		fire(true)

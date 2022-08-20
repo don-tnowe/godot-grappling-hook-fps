@@ -5,13 +5,15 @@ export var rocket_scene : PackedScene
 export var instant_trigger_distance := 5.0
 
 
-func fire():
+func fire(refire = false):
+	firing = true
 	if !can_refire(): return
-	.fire()
-	_spawn_projectile()
+	
+	last_fired = Time.get_ticks_msec()
+	_spawn_projectile(Vector3.FORWARD)
 
 
-func _spawn_projectile():
+func _spawn_projectile(dir):
 	var rocket = rocket_scene.instance()
 	$"Global".add_child(rocket)
 
@@ -26,7 +28,7 @@ func _spawn_projectile():
 			return
 
 	else:
-		rocket.launch(global_transform.basis.xform(Vector3.FORWARD))
+		rocket.launch(global_transform.basis.xform(dir))
 
 	rocket.velocity += hero_node.velocity * 0.66
 	rocket.translation = $"%FiringOrigin".global_translation
@@ -34,4 +36,4 @@ func _spawn_projectile():
 
 func _physics_process(_delta):
 	if firing && can_refire():
-		fire()
+		fire(true)
