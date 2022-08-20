@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/Graphics/UI/Circle.tres" type="Texture" id=1]
+[ext_resource path="res://assets/Graphics/UI/Circle2.tres" type="Texture" id=1]
 [ext_resource path="res://src/Hero/Weapons/RocketLauncherRocket.gd" type="Script" id=2]
+[ext_resource path="res://assets/Graphics/UI/Circle.tres" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Explosion"
@@ -99,11 +100,11 @@ tracks/2/keys = {
 radius = 0.75
 
 [sub_resource type="SphereShape" id=4]
-radius = 1.5
 
 [node name="Rocket" type="KinematicBody"]
 collision_layer = 32
 collision_mask = 24
+input_ray_pickable = false
 script = ExtResource( 2 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
@@ -116,22 +117,29 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 modulate = Color( 0.988235, 0.262745, 0.0313726, 1 )
 pixel_size = 0.0125
 billboard = 1
+texture = ExtResource( 3 )
+
+[node name="SpeedHalo" type="Sprite3D" parent="Rocket"]
+modulate = Color( 1, 0.803922, 0, 1 )
+pixel_size = 0.0125
+billboard = 1
+render_priority = -1
 texture = ExtResource( 1 )
 
 [node name="Shape" type="CollisionShape" parent="." groups=["RocketLauncherRocket"]]
 shape = SubResource( 3 )
 
 [node name="Explosion" type="Area" parent="."]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 collision_layer = 0
+input_ray_pickable = false
 
 [node name="Explosion" type="Sprite3D" parent="Explosion"]
 transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 modulate = Color( 0.988235, 0.890196, 0.0313726, 1 )
 opacity = 0.0
-pixel_size = 0.0125
+pixel_size = 0.008
 billboard = 1
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="Shape" type="CollisionShape" parent="Explosion" groups=["RocketLauncherRocket"]]
 shape = SubResource( 4 )
@@ -151,4 +159,5 @@ autostart = true
 
 [connection signal="body_entered" from="Explosion" to="." method="_on_Explosion_body_entered"]
 [connection signal="timeout" from="PlayerCollisionTimer" to="." method="set_collision_mask_bit" binds= [ 1, true ]]
+[connection signal="timeout" from="PlayerCollisionTimer" to="." method="set_collision_layer_bit" binds= [ 4, true ]]
 [connection signal="timeout" from="DestroyTimer" to="." method="collide"]

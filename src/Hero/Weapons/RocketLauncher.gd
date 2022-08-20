@@ -2,7 +2,7 @@ extends WeaponBase
 
 
 export var rocket_scene : PackedScene
-export var instant_trigger_distance := 3.0
+export var instant_trigger_distance := 5.0
 
 
 func fire():
@@ -21,6 +21,7 @@ func _spawn_projectile():
 		rocket.launch($"%FiringOrigin".global_translation.direction_to(point))
 		if global_translation.distance_squared_to(point) < instant_trigger_distance * instant_trigger_distance:
 			rocket.translation = point
+			rocket.impact_normal = $"RayCast".get_collision_normal()
 			rocket.collide()
 			return
 
