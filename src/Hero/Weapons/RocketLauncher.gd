@@ -27,7 +27,7 @@ func _spawn_projectile():
 	else:
 		rocket.launch(global_transform.basis.xform(Vector3.FORWARD))
 
-	rocket.velocity += hero_node.velocity
+	rocket.velocity += hero_node.velocity * 0.66
 	rocket.translation = $"%FiringOrigin".global_translation
 
 

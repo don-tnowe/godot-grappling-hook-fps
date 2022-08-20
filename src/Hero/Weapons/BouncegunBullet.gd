@@ -4,7 +4,7 @@ extends KinematicBody
 export var speed := 24.0
 export var hit_knockback := 16.0
 export var bounce_gravity := 18.0
-export var bounce_count := 2
+export var bounce_count := 3
 
 var velocity := Vector3.ZERO
 var has_bounced := false

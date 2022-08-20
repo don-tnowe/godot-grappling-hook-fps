@@ -51,7 +51,7 @@ func try_attach():
 func attach_to_point(point):
 	attached_tip = point 
 	attached_pivot = attached_tip
-	attached_pivot_distance = hero_node.transform.origin.distance_to(attached_pivot)
+	attached_pivot_distance = hero_node.translation.distance_to(attached_pivot)
 	attached = true
 	$"%Chain".visible = true
 
@@ -192,7 +192,7 @@ func _on_Hero_jumped(completed):
 	if !attached: return
 	if completed: return
 	
-	if attached_pivot.y > hero_node.translation.y:
+	if attached_pivot.y > hero_node.translation.y - 1.5:
 		hero_node.jump()
 
 	detach()

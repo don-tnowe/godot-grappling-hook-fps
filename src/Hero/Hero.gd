@@ -3,11 +3,11 @@ extends KinematicBody
 
 signal jumped(completed)
 
-export var run_acceleration := 8.0
-export var run_max_speed := 4.0
+export var run_acceleration := 16.0
+export var run_max_speed := 12.0
 export var sprint_acceleration := 4.0
-export var sprint_max_speed := 12.0
-export var brake := 12.0
+export var sprint_max_speed := 36.0
+export var brake := 16.0
 
 export var jump_strength := 9.0
 export var gravity := 18.0
